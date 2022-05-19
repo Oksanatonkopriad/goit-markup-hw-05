@@ -97,6 +97,7 @@ p {
     display: block;
     padding-top: 32px;
     padding-bottom: 32px;
+    position: relative;
 }
 
 
@@ -110,10 +111,40 @@ margin-left: 50px;
 .item .nav:focus {
     color: var(--accent-color);
 }
-
-.site-nav .link-active {
+.nav::after {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    height: 4px;
+    background: #2196F3;
+    border-radius: 2px;
+    opacity: 0;
+}
+.nav.current::after {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: -1px;
+    left: 0%;
+    width: 100%;
+    height: 4px;
+    background: #2196F3;
+    border-radius: 2px;
+    opacity: 0;
+}
+.nav:hover::after,
+.nav:focus::after {
+    opacity: 1;
+}
+.site-nav .link.current {
     color: var(--accent-color);
     text-decoration: none;
+}
+.nav.current::after {
+    opacity: 1;
 }
 
 /* Contacts */
@@ -202,8 +233,6 @@ margin-left: 50px;
     line-height: 1.87;
     /* identical to box height, or 188% */
     
-    
-
 }
 
 .button:hover,
@@ -213,6 +242,7 @@ margin-left: 50px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
+
 
 /* Features */
 .section-feature {
@@ -283,6 +313,34 @@ margin-left: 50px;
 }
 .work-list li + li {
     margin-left: 30px;
+}
+.work-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    
+    color: #FFFFFF;
+    
+}
+.example {
+    display: flex;
+    position: relative;
+    
+}
+.example-title {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 70px;
+    background: rgba(47, 48, 58, 0.8);
+    bottom: 0%;
+    right: 0%;
 }
 
 /* Team */
@@ -548,6 +606,52 @@ align-items: center;
 .social-icon:hover .icon-footer,
 .social-icon:focus .icon-footer {
     fill: #FFFFFF;
+}
+
+/* Backdrop */
+
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    background: rgba(0, 0, 0, 0.2);
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal {
+    position: absolute;
+    width: 528px;
+    height: 581px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.icon-close {
+    width: 18px;
+    height: 18px;
+}
+.close {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    margin-top: 8px;
+    margin-right: 8px;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+
 }
 
 /* Portfolio */
